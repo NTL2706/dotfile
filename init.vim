@@ -28,8 +28,13 @@ Plug 'christoomey/vim-tmux-navigator'	"poder navegar entre archivos abiertos
 "Plugin code 
 Plug 'jiangmiao/auto-pairs'		"autocompletado de llaves, corchetes, etc.
 Plug 'neoclide/coc.nvim', {'branch': 'release'}	"autocompletado inteligente
-Plug 'pangloss/vim-javascript'         "highlight syntax for js 
 Plug 'tpope/vim-commentary'      "comment code 
+
+" For javascript
+Plug 'pangloss/vim-javascript'         "highlight syntax for js 
+
+" For java
+
 
 " File search
 Plug 'junegunn/fzf', 
@@ -118,4 +123,16 @@ set list lcs=tab:..
 nnoremap <Tab> :bnext<CR>
 "setting open file fzf
 nnoremap 2 :Files<CR>
+
+
+lua << EOF
+    require'glow-hover'.setup {
+        -- The followings are the default values
+        max_width = 50,
+        padding = 10,
+        border = 'shadow',
+        glow_path = 'glow'
+    }
+EOF
+highlight! HoverFloatBorder ctermbg=None ctermfg=255
 
