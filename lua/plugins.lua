@@ -48,4 +48,7 @@ packer.startup(function(use)
   use 'norcalli/nvim-colorizer.lua'
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-file-browser.nvim'
+
+  -- git plugin
+  use 'lewis6991/gitsigns.nvim'
 end)
