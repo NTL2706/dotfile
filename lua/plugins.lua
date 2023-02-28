@@ -43,7 +43,7 @@ packer.startup(function(use)
   use 'windwp/nvim-autopairs'
   use 'windwp/nvim-ts-autotag'
   use "lukas-reineke/indent-blankline.nvim"
-
+  --
   -- seaech file and word
   use 'kyazdani42/nvim-web-devicons' -- File icons
   use 'norcalli/nvim-colorizer.lua'
@@ -52,4 +52,7 @@ packer.startup(function(use)
 
   -- git plugin
   use 'lewis6991/gitsigns.nvim'
+  use {
+    'dinhhuy258/git.nvim'
+  }
 end)
