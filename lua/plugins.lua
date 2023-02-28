@@ -42,6 +42,7 @@ packer.startup(function(use)
   use 'glepnir/lspsaga.nvim' -- LSP UIs
   use 'windwp/nvim-autopairs'
   use 'windwp/nvim-ts-autotag'
+  use "lukas-reineke/indent-blankline.nvim"
 
   -- seaech file and word
   use 'kyazdani42/nvim-web-devicons' -- File icons
