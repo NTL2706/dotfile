@@ -18,12 +18,13 @@ local enable_format_on_save = function(_, bufnr)
 end
 
 -- Use an on_attach function to only map the following keys
-vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+local opt_s = { noremap = true, silent = true }
+vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opt_s)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opt_s)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opt_s)
+vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opt_s)
 
-vim.keymap.set('i', '<Tab>', '<C-n>', opts)
+vim.keymap.set('i', '<Tab>', '<C-n>', opt_s)
 
 
 -- after the language server attaches to the current buffer
@@ -83,11 +84,41 @@ nvim_lsp.flow.setup {
 
 nvim_lsp.tsserver.setup {
   on_attach = on_attach,
-  filetypes ={ "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+  filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
   cmd = { "typescript-language-server", "--stdio" },
   update_in_insert = true,
-  single_file_support = true; 
+  single_file_support = true,
   capabilities = capabilities
+}
+
+-- config html
+nvim_lsp.html.setup {
+  on_attach = on_attach,
+  filetypes = { "html" },
+  cmd = { "vscode-html-language-server", "--stdio" },
+  update_in_insert = true,
+  single_file_support = true,
+  capabilities = capabilities
+}
+
+--config css, scss
+nvim_lsp.cssls.setup {
+  on_attach = on_attach,
+  filetypes = { "css", "scss", "less" },
+  cmd = { "vscode-html-language-server", "--stdio" },
+  update_in_insert = true,
+  single_file_support = true,
+  capabilities = capabilities
+}
+
+nvim_lsp.java_language_server {
+  on_attach = on_attach,
+  filetypes = { "java" },
+  cmd = { "vscode-html-language-server", "--stdio" },
+  update_in_insert = true,
+  single_file_support = true,
+  capabilities = capabilities
+
 }
 
 nvim_lsp.sourcekit.setup {
