@@ -111,16 +111,6 @@ nvim_lsp.cssls.setup {
   capabilities = capabilities
 }
 
-nvim_lsp.java_language_server {
-  on_attach = on_attach,
-  filetypes = { "java" },
-  cmd = { "vscode-html-language-server", "--stdio" },
-  update_in_insert = true,
-  single_file_support = true,
-  capabilities = capabilities
-
-}
-
 nvim_lsp.sourcekit.setup {
   on_attach = on_attach,
   capabilities = capabilities,
