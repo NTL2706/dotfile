@@ -10,18 +10,26 @@ vim.cmd [[packadd packer.nvim]] --
 packer.startup(function(use)
   use 'wbthomason/packer.nvim'
   -- theme
-  use 'dracula/vim' -- theme for vim
-  use 'nvim-lua/plenary.nvim' -- Common utilities
+  use({
+    "neanias/everforest-nvim",
+    -- Optional; default configuration will be used if setup isn't called.
+    config = function()
+      require("everforest").setup()
+    end,
+  })
+  -- use 'dracula/vim' -- theme for vim
+  use 'nvim-lua/plenary.nvim'     -- Common utilities
   use 'nvim-lualine/lualine.nvim' -- Statusline  use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
   use 'akinsho/nvim-bufferline.lua'
   -- LSP
-  use "neovim/nvim-lspconfig" -- enable LSP
+  use "neovim/nvim-lspconfig"           -- enable LSP
   use 'jose-elias-alvarez/null-ls.nvim' -- LSP diagnostics and code actions
+  use 'MunifTanjim/prettier.nvim'       -- plugin for neovim's bult-in
 
-  use 'onsails/lspkind-nvim' -- vscode-like pictograms
-  use 'hrsh7th/cmp-buffer' -- nvim-cmp source for buffer words
-  use 'hrsh7th/cmp-nvim-lsp' -- nvim-cmp source for neovim's built-in LSP
-  use 'hrsh7th/nvim-cmp' -- Completion
+  use 'onsails/lspkind-nvim'            -- vscode-like pictograms
+  use 'hrsh7th/cmp-buffer'              -- nvim-cmp source for buffer words
+  use 'hrsh7th/cmp-nvim-lsp'            -- nvim-cmp source for neovim's built-in LSP
+  use 'hrsh7th/nvim-cmp'                -- Completion
   use 'williamboman/mason.nvim'
   use 'williamboman/mason-lspconfig.nvim'
 

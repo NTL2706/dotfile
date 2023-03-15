@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "tree-sitter-cli": "^0.20.7"
+  },
+  "devDependencies": {
+    "prettier": "^2.8.4"
   }
 }

@@ -1,2 +1,1 @@
--- Lua:
-vim.cmd [[colorscheme dracula]]
+-- Lua:vim.cmd [[colorscheme dracula]]
