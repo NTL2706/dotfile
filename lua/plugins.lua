@@ -4,21 +4,21 @@ if (not status) then
   return
 end
 
-
 vim.cmd [[packadd packer.nvim]] --
 
 packer.startup(function(use)
   use 'wbthomason/packer.nvim'
   -- theme
-  use({
-    "neanias/everforest-nvim",
-    -- Optional; default configuration will be used if setup isn't called.
-    config = function()
-      require("everforest").setup()
-    end,
-  })
-  -- use 'dracula/vim' -- theme for vim
+  -- use({
+  --   "neanias/everforest-nvim",
+  --   -- Optional; default configuration will be used if setup isn't called.
+  --   config = function()
+  --     require("everforest").setup()
+  --   end,
+  -- })
+  -- -- use 'dracula/vim' -- theme for vim
   use 'nvim-lua/plenary.nvim'     -- Common utilities
+  use 'folke/tokyonight.nvim'
   use 'nvim-lualine/lualine.nvim' -- Statusline  use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
   use 'akinsho/nvim-bufferline.lua'
   -- LSP
@@ -41,6 +41,12 @@ packer.startup(function(use)
       require('Comment').setup()
     end
   }
+
+  use {
+    "folke/todo-comments.nvim",
+    requires = "nvim-lua/plenary.nvim",
+  }
+
   -- Treesitter
   use {
     "nvim-treesitter/nvim-treesitter",
@@ -51,12 +57,16 @@ packer.startup(function(use)
   use 'windwp/nvim-autopairs'
   use 'windwp/nvim-ts-autotag'
   use "lukas-reineke/indent-blankline.nvim"
-  --
   -- seaech file and word
   use 'kyazdani42/nvim-web-devicons' -- File icons
   use 'norcalli/nvim-colorizer.lua'
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-file-browser.nvim'
+  -- Lua
+  use {
+    "folke/trouble.nvim",
+    requires = "nvim-tree/nvim-web-devicons",
+  }
 
   -- git plugin
   use 'lewis6991/gitsigns.nvim'

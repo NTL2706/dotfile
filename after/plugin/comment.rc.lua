@@ -23,7 +23,8 @@ comment.setup {
     block = 'gb',
   },
   ---LHS of extra mappings
-  extra = { ---Add comment on the line above
+  extra = {
+    ---Add comment on the line above
     above = 'gcO',
     ---Add comment on the line below
     below = 'gco',

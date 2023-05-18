@@ -24,8 +24,6 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opt_s)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opt_s)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opt_s)
 
-vim.keymap.set('i', '<Tab>', '<C-n>', opt_s)
-
 
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
@@ -82,6 +80,37 @@ nvim_lsp.flow.setup {
   capabilities = capabilities
 }
 
+
+-- config for view engine
+nvim_lsp.tailwindcss.setup {
+  on_attach = on_attach,
+  filetypes = { "aspnetcorerazor", "astro", "astro-markdown", "blade", "clojure", "django-html", "htmldjango", "edge",
+    "eelixir", "elixir", "ejs", "erb", "eruby", "gohtml", "haml", "handlebars", "hbs", "html", "html-eex", "heex",
+    "jade", "leaf", "liquid", "markdown", "mdx", "mustache", "njk", "nunjucks", "php", "razor", "slim", "twig", "css",
+    "less", "postcss", "sass", "scss", "stylus", "sugarss", "javascript", "javascriptreact", "reason", "rescript",
+    "typescript", "typescriptreact", "vue", "svelte" },
+  cmd = { "tailwindcss-language-server", "--stdio" },
+  update_in_insert = true,
+  single_file_support = true,
+  capabilities = capabilities,
+  settings = {
+    tailwindCSS = {
+      classAttributes = { "class", "className", "classList", "ngClass" },
+      lint = {
+        cssConflict = "warning",
+        invalidApply = "error",
+        invalidConfigPath = "error",
+        invalidScreen = "error",
+        invalidTailwindDirective = "error",
+        invalidVariant = "error",
+        recommendedVariantOrder = "warning"
+      },
+      validate = true
+    }
+  }
+}
+
+-- config javascript
 nvim_lsp.tsserver.setup {
   on_attach = on_attach,
   filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
@@ -128,7 +157,6 @@ nvim_lsp.lua_ls.setup {
         -- Get the language server to recognize the `vim` global
         globals = { 'vim' },
       },
-
       workspace = {
         -- Make the server aware of Neovim runtime files
         library = vim.api.nvim_get_runtime_file("", true),
@@ -147,20 +175,20 @@ nvim_lsp.cssls.setup {
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
-  underline = true,
-  update_in_insert = true,
-  virtual_text = true,
-  severity_sort = true,
-}
+    underline = true,
+    update_in_insert = true,
+    virtual_text = true,
+    severity_sort = true,
+  }
 )
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
-  underline = true,
-  update_in_insert = false,
-  virtual_text = { spacing = 4, prefix = "●" },
-  severity_sort = true,
-}
+    underline = true,
+    update_in_insert = false,
+    virtual_text = { spacing = 4, prefix = "●" },
+    severity_sort = true,
+  }
 )
 
 -- Diagnostic symbols in the sign column (gutter)
