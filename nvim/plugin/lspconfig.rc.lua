@@ -119,6 +119,17 @@ nvim_lsp.tsserver.setup {
   capabilities = capabilities
 }
 
+--config python
+nvim_lsp.jedi_language_server.setup{
+  on_attach =on_attach,
+  cmd = { "jedi-language-server" },
+  filetypes = { "python" },
+  update_in_insert = true,
+  single_file_support = true,
+  capabilities = capabilities
+
+}
+
 -- config html
 nvim_lsp.html.setup {
   on_attach = on_attach,
@@ -170,6 +181,8 @@ nvim_lsp.cssls.setup {
   on_attach = on_attach,
   capabilities = capabilities
 }
+
+
 
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
