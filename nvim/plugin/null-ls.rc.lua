@@ -12,7 +12,7 @@ local lsp_formatting = function(bufnr)
   })
 end
 
-null_ls.setup {
+null_l.setup {
   sources = {
     null_ls.builtins.formatting.prettierd,
     null_ls.builtins.diagnostics.eslint.with({

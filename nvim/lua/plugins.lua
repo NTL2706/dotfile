@@ -67,7 +67,9 @@ packer.startup(function(use)
     "folke/trouble.nvim",
     requires = "nvim-tree/nvim-web-devicons",
   }
-
+  use{
+    "nvim-tree/nvim-tree.lua"
+  }
   -- git plugin
   use 'lewis6991/gitsigns.nvim'
   use {
@@ -75,3 +77,4 @@ packer.startup(function(use)
   }
 
 end)
+
