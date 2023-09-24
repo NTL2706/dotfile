@@ -1,0 +1,3 @@
+.monaco-editor .cursors-layer .cursor{
+  background-image:  linear-gradient(45deg, #5f56ae 0 50%, #a02cff 50% 100%);
+}
