@@ -33,3 +33,7 @@ ts.setup {
 
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
 parser_config.tsx.filetype_to_parsername = { "javascript", "typescript.tsx" }
+
+
+vim.keymap.set('n', 'to', '<Cmd>NvimTreeOpen<CR>', {})
+vim.keymap.set('n', 'tc', '<Cmd>NvimTreeClose<CR>', {})

@@ -16,9 +16,9 @@ packer.startup(function(use)
   --     require("everforest").setup()
   --   end,
   -- })
-  -- -- use 'dracula/vim' -- theme for vim
+  use 'dracula/vim' -- theme for vim
   use 'nvim-lua/plenary.nvim'     -- Common utilities
-  use 'folke/tokyonight.nvim'
+  -- use 'folke/tokyonight.nvim'
   use 'nvim-lualine/lualine.nvim' -- Statusline  use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
   use 'akinsho/nvim-bufferline.lua'
   -- LSP
