@@ -1,0 +1,3 @@
+//Terminal collor custom
+background: #C8B88C
+text      : #3C4A4F
