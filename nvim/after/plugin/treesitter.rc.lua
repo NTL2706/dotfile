@@ -25,10 +25,13 @@ ts.setup {
     "lua",
     "javascript",
     "python",
+    "lua",
   },
   autotag = {
     enable = true,
   },
+  sync_install = false,
+  auto_install = true,
 }
 
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()

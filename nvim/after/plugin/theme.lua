@@ -5,7 +5,8 @@
 -- require("everforest").load()
 --
 -- Lua
-vim.cmd[[colorscheme dracula]]
+-- vim.cmd[[colorscheme dracula]]        -- theme dracula
+require('colorbuddy').colorscheme('cobalt2')
 --
 -- local dracula = require("dracula")
 -- dracula.setup({

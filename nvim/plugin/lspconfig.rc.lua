@@ -37,40 +37,54 @@ local on_attach = function(client, bufnr)
   local opts = { noremap = true, silent = true }
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  --buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  --buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+  vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
+  vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
+  vim.keymap.set('n', '<space>wl', function()
+    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+  end, opts)
+  vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
+  vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
+  vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
+  vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+  vim.keymap.set('n', '<space>f', function()
+    vim.lsp.buf.format { async = true }
+  end, opts)
+
   -- See `:help vim.lsp.*` for documentation on any of the below functions
 end
 
 protocol.CompletionItemKind = {
-    Text = "󰉿",
-      Method = "󰆧",
-      Function = "󰊕",
-      Constructor = "",
-      Field = "󰜢",
-      Variable = "󰀫",
-      Class = "󰠱",
-      Interface = "",
-      Module = "",
-      Property = "󰜢",
-      Unit = "󰑭",
-      Value = "󰎠",
-      Enum = "",
-      Keyword = "󰌋",
-      Snippet = "",
-      Color = "󰏘",
-      File = "󰈙",
-      Reference = "󰈇",
-      Folder = "󰉋",
-      EnumMember = "",
-      Constant = "󰏿",
-      Struct = "󰙅",
-      Event = "",
-      Operator = "󰆕",
-      TypeParameter = "", 
-}  --
+  Text = "󰉿",
+  Method = "󰆧",
+  Function = "󰊕",
+  Constructor = "",
+  Field = "󰜢",
+  Variable = "󰀫",
+  Class = "󰠱",
+  Interface = "",
+  Module = "",
+  Property = "󰜢",
+  Unit = "󰑭",
+  Value = "󰎠",
+  Enum = "",
+  Keyword = "󰌋",
+  Snippet = "",
+  Color = "󰏘",
+  File = "󰈙",
+  Reference = "󰈇",
+  Folder = "󰉋",
+  EnumMember = "",
+  Constant = "󰏿",
+  Struct = "󰙅",
+  Event = "",
+  Operator = "󰆕",
+  TypeParameter = "",
+} --
 -- Set up completion using nvim_cmp with LSP source
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
@@ -79,36 +93,37 @@ nvim_lsp.flow.setup {
   capabilities = capabilities
 }
 
-
--- config for view engine
-nvim_lsp.tailwindcss.setup {
-  on_attach = on_attach,
-  filetypes = { "aspnetcorerazor", "astro", "astro-markdown", "blade", "clojure", "django-html", "htmldjango", "edge",
-    "eelixir", "elixir", "ejs", "erb", "eruby", "gohtml", "haml", "handlebars", "hbs", "html", "html-eex", "heex",
-    "jade", "leaf", "liquid", "markdown", "mdx", "mustache", "njk", "nunjucks", "php", "razor", "slim", "twig", "css",
-    "less", "postcss", "sass", "scss", "stylus", "sugarss", "javascript", "javascriptreact", "reason", "rescript",
-    "typescript", "typescriptreact", "vue", "svelte" },
-  cmd = { "tailwindcss-language-server", "--stdio" },
-  update_in_insert = true,
-  single_file_support = true,
-  capabilities = capabilities,
-  settings = {
-    tailwindCSS = {
-      classAttributes = { "class", "className", "classList", "ngClass" },
-      lint = {
-        cssConflict = "warning",
-        invalidApply = "error",
-        invalidConfigPath = "error",
-        invalidScreen = "error",
-        invalidTailwindDirective = "error",
-        invalidVariant = "error",
-        recommendedVariantOrder = "warning"
-      },
-      validate = true
-    }
-  }
-}
-
+--
+-- TODO: config for view engine
+-- nvim_lsp.tailwindcss.setup {
+--   on_attach = on_attach,
+--   filetypes = { "aspnetcorerazor", "astro", "astro-markdown", "blade", "clojure", "django-html", "htmldjango", "edge",
+--     "eelixir", "elixir", "ejs", "erb", "eruby", "gohtml", "haml", "handlebars", "hbs", "html", "html-eex", "heex",
+--     "jade", "leaf", "liquid", "markdown", "mdx", "mustache", "njk", "nunjucks", "php", "razor", "slim", "twig", "css",
+--     "less", "postcss", "sass", "scss", "stylus", "sugarss", "javascript", "javascriptreact", "reason", "rescript",
+--     "typescript", "typescriptreact", "vue", "svelte" },
+--   cmd = { "tailwindcss-language-server", "--stdio" },
+--   update_in_insert = true,
+--   single_file_support = true,
+--   capabilities = capabilities,
+--   settings = {
+--     tailwindCSS = {
+--       classAttributes = { "class", "className", "classList", "ngClass" },
+--       lint = {
+--         cssConflict = "warning",
+--         invalidApply = "error",
+--         invalidConfigPath = "error",
+--         invalidScreen = "error",
+--         invalidTailwindDirective = "error",
+--         invalidVariant = "error",
+--         recommendedVariantOrder = "warning"
+--       },
+--       validate = true
+--     }
+--   }
+-- }
+--
+--
 -- config javascript
 nvim_lsp.tsserver.setup {
   on_attach = on_attach,
@@ -119,42 +134,7 @@ nvim_lsp.tsserver.setup {
   capabilities = capabilities
 }
 
---config python
-nvim_lsp.jedi_language_server.setup{
-  on_attach =on_attach,
-  cmd = { "jedi-language-server" },
-  filetypes = { "python" },
-  update_in_insert = true,
-  single_file_support = true,
-  capabilities = capabilities
-
-}
-
--- config html
-nvim_lsp.html.setup {
-  on_attach = on_attach,
-  filetypes = { "html" },
-  cmd = { "vscode-html-language-server", "--stdio" },
-  update_in_insert = true,
-  single_file_support = true,
-  capabilities = capabilities
-}
-
---config css, scss
-nvim_lsp.cssls.setup {
-  on_attach = on_attach,
-  filetypes = { "css", "scss", "less" },
-  cmd = { "vscode-html-language-server", "--stdio" },
-  update_in_insert = true,
-  single_file_support = true,
-  capabilities = capabilities
-}
-
-nvim_lsp.sourcekit.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
-
+-- config lua
 nvim_lsp.lua_ls.setup {
   capabilities = capabilities,
   on_attach = function(client, bufnr)
@@ -176,14 +156,15 @@ nvim_lsp.lua_ls.setup {
   },
 }
 
-
-nvim_lsp.cssls.setup {
+-- config python
+nvim_lsp.pyright.setup {
   on_attach = on_attach,
+  filetypes = { "python" },
+  cmd = { "pyright-langserver", "--stdio" },
+  update_in_insert = true,
+  single_file_support = true,
   capabilities = capabilities
 }
-
-
-
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
