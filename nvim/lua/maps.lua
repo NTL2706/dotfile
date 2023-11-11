@@ -16,6 +16,8 @@ vim.g.maplocalleader = " "
 --   visual_mode = "v",
 --   visual_block_mode = "x", term_mode = "t",
 --   command_mode = "c",
+keymap("v", "H", "0", opts)
+keymap("v", "L", "$", opts)
 
 -- Normal --
 -- Better window navigation
@@ -26,7 +28,7 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 
 keymap("n", "<leader>e", ":Lex 30<cr>", opts)
 
---Move cursor to beginning/end of line 
+--Move cursor to beginning/end of line
 keymap("n", "L", "$", opts)
 keymap("n", "H", "0", opts)
 
