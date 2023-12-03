@@ -16,7 +16,6 @@ packer.startup(function(use)
     --     require("everforest").setup()
     --   end,
     -- })
-
     use 'tjdevries/colorbuddy.nvim'
     use {
         'lalitmee/cobalt2.nvim',
