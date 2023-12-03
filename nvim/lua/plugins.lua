@@ -21,12 +21,14 @@ packer.startup(function(use)
     use {
         'lalitmee/cobalt2.nvim',
         requires = 'tjdevries/colorbuddy.nvim'
-    }                               -- theme
+    } -- theme
+    -- use "EdenEast/nightfox.nvim"
     -- use 'dracula/vim'                  -- theme for vim
-    use 'nvim-lua/plenary.nvim'     -- Common utilities
+    use 'nvim-lua/plenary.nvim'      -- Common utilities
     -- use 'folke/tokyonight.nvim'
-    use 'nvim-lualine/lualine.nvim' -- Statusline  use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
+    use 'nvim-lualine/lualine.nvim'  -- Statusline  use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
     use 'akinsho/nvim-bufferline.lua'
+    use 'xiyaowong/transparent.nvim' -- Remove all background colors to make nvim transparent.
 
     -- NOTE: LSP
     use "neovim/nvim-lspconfig"             -- enable LSP
@@ -61,13 +63,11 @@ packer.startup(function(use)
         "nvim-treesitter/nvim-treesitter",
         run = ":TSUpdate",
     }
+    use { "nvim-tree/nvim-tree.lua" } -- file explore
 
     -- NOTE: search file
     use 'nvim-telescope/telescope.nvim'
     use 'nvim-telescope/telescope-file-browser.nvim'
-
-
-    use { "nvim-tree/nvim-tree.lua" } -- file explore
 
     -- NOTE: use 'kkharji/lspsaga.nvim' -- LSP UIs
     use 'windwp/nvim-autopairs'

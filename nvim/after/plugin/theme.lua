@@ -62,3 +62,42 @@ require('colorbuddy').colorscheme('cobalt2')
 -- })
 --
 -- local colors = require('dracula').colors()
+--
+
+
+-- TODO: hidden background colors
+-- vim.cmd([[highlight Normal guibg=none ctermbg=none]])
+-- vim.cmd([[highlight LineNr guibg=none ctermbg=none]])
+-- vim.cmd([[highlight Folded guibg=none ctermbg=none]])
+-- vim.cmd([[highlight NonText guibg=none ctermbg=none]])
+-- vim.cmd([[highlight SpecialKey guibg=none ctermbg=none]])
+-- vim.cmd([[highlight VertSplit guibg=none ctermbg=none]])
+-- vim.cmd([[highlight SignColumn guibg=none ctermbg=none]])
+-- vim.cmd([[highlight EndOfBuffer guibg=none ctermbg=none]])
+-- vim.cmd([[highlight TabLine guibg=none ctermbg=none]])
+-- vim.cmd([[highlight TabLineSeparator guibg=none ctermbg=none]])
+-- vim.cmd([[highlight TabLineFill guibg=none ctermbg=none]])
+-- vim.cmd([[highlight TabLineSel guibg=none ctermbg=none]])
+--
+
+local status_trans, trans = pcall(require, "transparent")
+if (not status_trans)
+then
+    print("No load transparent")
+    return
+end
+
+
+trans.setup({  -- Optional, you don't have to run setup.
+    groups = { -- table: default groups
+        'Normal', 'NormalNC', 'Comment', 'Constant', 'Special', 'Identifier',
+        'Statement', 'PreProc', 'Type', 'Underlined', 'Todo', 'String', 'Function',
+        'Conditional', 'Repeat', 'Operator', 'Structure', 'LineNr', 'NonText',
+        'SignColumn', 'CursorLine', 'CursorLineNr', 'StatusLine', 'StatusLineNC',
+        'EndOfBuffer',
+    },
+    extra_groups = {},   -- table: additional groups that should be cleared
+    exclude_groups = {}, -- table: groups you don't want to clear
+})
+
+trans.clear_prefix('BufferLine')

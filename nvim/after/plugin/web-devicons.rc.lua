@@ -1,11 +1,12 @@
 local status, icons = pcall(require, "nvim-web-devicons")
-if (not status) then return end
-
+if (not status) then
+    print("no load nvim-web-devicons")
+    return
+end
+--
 icons.setup {
     -- your personnal icons can go here (to override)
     -- DevIcon will be appended to `name`
-    override = {
-    },
     -- globally enable default icons (default to false)
     color_icons = true,
     strict = true,
