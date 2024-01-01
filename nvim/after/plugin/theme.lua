@@ -101,3 +101,4 @@ trans.setup({  -- Optional, you don't have to run setup.
 })
 
 trans.clear_prefix('BufferLine')
+trans.clear_prefix('NeoTree')
