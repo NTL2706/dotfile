@@ -124,7 +124,7 @@ nvim_lsp.flow.setup {
 -- }
 --
 --
--- config javascript
+-- NOTE: config javascript
 nvim_lsp.tsserver.setup {
     on_attach = on_attach,
     filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
@@ -134,7 +134,7 @@ nvim_lsp.tsserver.setup {
     capabilities = capabilities
 }
 
--- config lua
+-- NOTE: config lua
 nvim_lsp.lua_ls.setup {
     capabilities = capabilities,
     on_attach = function(client, bufnr)
@@ -156,7 +156,7 @@ nvim_lsp.lua_ls.setup {
     },
 }
 
--- config python
+-- NOTE: config python
 nvim_lsp.pyright.setup {
     on_attach = on_attach,
     filetypes = { "python" },
@@ -174,6 +174,19 @@ nvim_lsp.pyright.setup {
 --     single_file_support = true,
 --     capabilities = capabilities
 -- }
+
+-- NOTE: setup eslint
+nvim_lsp.eslint.setup({
+    settings = {
+        packageManager = 'yarn'
+    },
+    on_attach = function(client, bufnr)
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            buffer = bufnr,
+            command = "EslintFixAll",
+        })
+    end,
+})
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -193,6 +206,8 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     }
 )
 
+
+
 -- Diagnostic symbols in the sign column (gutter)
 local signs = { Error = "", Warn = " ", Hint = "", Info = " " }
 for type, icon in pairs(signs) do
@@ -209,3 +224,14 @@ vim.diagnostic.config({
         source = "always", -- Or "if_many"
     },
 })
+
+
+-- require('tabnine').setup({
+--     disable_auto_comment = true,
+--     accept_keymap = "<Tab>",
+--     dismiss_keymap = "<C-]>",
+--     debounce_ms = 800,
+--     suggestion_color = { gui = "#808080", cterm = 244 },
+--     exclude_filetypes = { "TelescopePrompt", "NvimTree" },
+--     log_file_path = nil,
+-- })

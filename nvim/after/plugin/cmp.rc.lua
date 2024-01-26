@@ -17,8 +17,8 @@ cmp.setup({
             behavior = cmp.ConfirmBehavior.Replace,
             select = true
         }),
-        ['<S-Tab>'] = cmp.mapping.select_prev_item(),
-        ['<Tab>'] = cmp.mapping.select_next_item(),
+        --     ['<S-Tab>'] = cmp.mapping.select_prev_item(),
+        --     ['<Tab>'] = cmp.mapping.select_next_item(),
     }),
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
