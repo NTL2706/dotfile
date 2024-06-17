@@ -8,6 +8,7 @@ vim.opt.fileencoding = "utf-8"                  -- the encoding written to a fil
 vim.opt.backup = false                          -- creates a backup file
 
 vim.opt.clipboard:append { 'unnamedplus' }      -- allows neovim to access the system clipboard
+vim.opt.clipboard:prepend { 'unnamed', 'unnamedplus' }
 vim.opt.cmdheight = 2                           -- more space in the neovim command line for displaying messages
 vim.opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
 vim.opt.conceallevel = 0                        -- so that `` is visible in markdown files

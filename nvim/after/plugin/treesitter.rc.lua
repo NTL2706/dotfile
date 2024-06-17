@@ -1,5 +1,8 @@
 local status, ts = pcall(require, "nvim-treesitter.configs")
-if (not status) then return end
+if (not status) then
+    print("Import nvim-treesitter fail")
+    return
+end
 
 local status_tree, nvim_tree = pcall(require, "nvim-tree")
 if (not status_tree)
@@ -11,6 +14,7 @@ end
 ts.setup {
     highlight = {
         enable = true,
+        -- additional_vim_regex_highlighting = false,
         disable = {},
     },
     indent = {
@@ -33,7 +37,7 @@ ts.setup {
         "lua",
         "javascript",
         "python",
-        "lua",
+        "c"
     },
     autotag = {
         enable = true,

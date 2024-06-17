@@ -10,24 +10,31 @@ packer.startup(function(use)
     use 'wbthomason/packer.nvim'
     -- NOTE: theme
     -- use({
-    --   "neanias/everforest-nvim",
-    --   -- Optional; default configuration will be used if setup isn't called.
-    --   config = function()
-    --     require("everforest").setup()
-    --   end,
+    --     "neanias/everforest-nvim",
+    --     -- Optional; default configuration will be used if setup isn't called.
+    --     config = function()
+    --         require("everforest").setup()
+    --     end,
     -- })
-    use 'tjdevries/colorbuddy.nvim'
+    -- use "EdenEast/nightfox.nvim"
+    -- use 'Mofiqul/dracula.nvim'
     use {
         'lalitmee/cobalt2.nvim',
         requires = 'tjdevries/colorbuddy.nvim'
-    } -- theme
-    -- use "EdenEast/nightfox.nvim"
-    -- use 'dracula/vim'                  -- theme for vim
+    }
+
     use 'nvim-lua/plenary.nvim'      -- Common utilities
     -- use 'folke/tokyonight.nvim'
     use 'nvim-lualine/lualine.nvim'  -- Statusline  use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
     use 'akinsho/nvim-bufferline.lua'
     use 'xiyaowong/transparent.nvim' -- Remove all background colors to make nvim transparent.
+    use {
+        "folke/noice.nvim",
+        requires = {
+            "MunifTanjim/nui.nvim",
+            "rcarriga/nvim-notify",
+        }
+    }
 
     -- NOTE: LSP
     use "neovim/nvim-lspconfig"             -- enable LSP
@@ -44,7 +51,20 @@ packer.startup(function(use)
 
     use 'L3MON4D3/LuaSnip'
 
-    -- NOTE:  Command code
+    use { "zbirenbaum/copilot.lua" }
+    use {
+        "zbirenbaum/copilot-cmp",
+        after = { "copilot.lua", "nvim-cmp" },
+    }
+
+    -- use {
+    --     'lewis6991/spellsitter.nvim',
+    --     config = function()
+    --         require('spellsitter').setup()
+    --     end
+    -- }
+
+    --NOTE:  Command code
     use {
         'numToStr/Comment.nvim',
         config = function()
@@ -86,6 +106,10 @@ packer.startup(function(use)
     use {
         'dinhhuy258/git.nvim'
     }
+    use {
+        'rbong/vim-flog',
+        requires = 'tpope/vim-fugitive',
+    }
 
-    use { 'codota/tabnine-nvim', run = "./dl_binaries.sh" }
+    -- use { 'codota/tabnine-nvim', run = "./dl_binaries.sh" }
 end)

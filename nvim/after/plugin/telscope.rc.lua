@@ -19,6 +19,7 @@ telescope.setup {
         file_ignore_patterns = {
             "node_modules", "build", "dist", "yarn.lock", "venv"
         },
+        layout_strategy = "horizontal",
     },
     extensions = {
         file_browser = {

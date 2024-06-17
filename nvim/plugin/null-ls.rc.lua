@@ -60,6 +60,8 @@ null_ls.setup({
         null_ls.builtins.formatting.stylua.with(opts.stylua_formatting),
         null_ls.builtins.formatting.elm_format.with(opts.elm_format_formatting),
         null_ls.builtins.code_actions.eslint_d.with(opts.eslint_diagnostics),
+        null_ls.builtins.formatting.black,
+        null_ls.builtins.diagnostics.pylint
     },
     on_attach = on_attach,
 })

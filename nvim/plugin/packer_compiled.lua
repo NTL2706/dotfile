@@ -105,6 +105,18 @@ _G.packer_plugins = {
     path = "/home/ntl/.local/share/nvim/site/pack/packer/start/colorbuddy.nvim",
     url = "https://github.com/tjdevries/colorbuddy.nvim"
   },
+  ["copilot-cmp"] = {
+    load_after = {},
+    loaded = true,
+    needs_bufread = false,
+    path = "/home/ntl/.local/share/nvim/site/pack/packer/opt/copilot-cmp",
+    url = "https://github.com/zbirenbaum/copilot-cmp"
+  },
+  ["copilot.lua"] = {
+    loaded = true,
+    path = "/home/ntl/.local/share/nvim/site/pack/packer/start/copilot.lua",
+    url = "https://github.com/zbirenbaum/copilot.lua"
+  },
   ["git.nvim"] = {
     loaded = true,
     path = "/home/ntl/.local/share/nvim/site/pack/packer/start/git.nvim",
@@ -140,6 +152,16 @@ _G.packer_plugins = {
     path = "/home/ntl/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
+  ["noice.nvim"] = {
+    loaded = true,
+    path = "/home/ntl/.local/share/nvim/site/pack/packer/start/noice.nvim",
+    url = "https://github.com/folke/noice.nvim"
+  },
+  ["nui.nvim"] = {
+    loaded = true,
+    path = "/home/ntl/.local/share/nvim/site/pack/packer/start/nui.nvim",
+    url = "https://github.com/MunifTanjim/nui.nvim"
+  },
   ["null-ls.nvim"] = {
     loaded = true,
     path = "/home/ntl/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
@@ -169,6 +191,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ntl/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
+  },
+  ["nvim-notify"] = {
+    loaded = true,
+    path = "/home/ntl/.local/share/nvim/site/pack/packer/start/nvim-notify",
+    url = "https://github.com/rcarriga/nvim-notify"
   },
   ["nvim-tree.lua"] = {
     loaded = true,
@@ -205,6 +232,11 @@ _G.packer_plugins = {
     path = "/home/ntl/.local/share/nvim/site/pack/packer/start/prettier.nvim",
     url = "https://github.com/MunifTanjim/prettier.nvim"
   },
+  ["tabnine-nvim"] = {
+    loaded = true,
+    path = "/home/ntl/.local/share/nvim/site/pack/packer/start/tabnine-nvim",
+    url = "https://github.com/codota/tabnine-nvim"
+  },
   ["telescope-file-browser.nvim"] = {
     loaded = true,
     path = "/home/ntl/.local/share/nvim/site/pack/packer/start/telescope-file-browser.nvim",
@@ -220,6 +252,11 @@ _G.packer_plugins = {
     path = "/home/ntl/.local/share/nvim/site/pack/packer/start/todo-comments.nvim",
     url = "https://github.com/folke/todo-comments.nvim"
   },
+  ["transparent.nvim"] = {
+    loaded = true,
+    path = "/home/ntl/.local/share/nvim/site/pack/packer/start/transparent.nvim",
+    url = "https://github.com/xiyaowong/transparent.nvim"
+  },
   ["trouble.nvim"] = {
     loaded = true,
     path = "/home/ntl/.local/share/nvim/site/pack/packer/start/trouble.nvim",
@@ -232,6 +269,12 @@ time([[Defining packer_plugins]], false)
 time([[Config for Comment.nvim]], true)
 try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0", "config", "Comment.nvim")
 time([[Config for Comment.nvim]], false)
+-- Load plugins in order defined by `after`
+time([[Sequenced loading]], true)
+vim.cmd [[ packadd nvim-cmp ]]
+vim.cmd [[ packadd copilot.lua ]]
+vim.cmd [[ packadd copilot-cmp ]]
+time([[Sequenced loading]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

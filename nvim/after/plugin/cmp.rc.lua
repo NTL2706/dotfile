@@ -3,6 +3,25 @@ if (not status) then return end
 local lspkind = require 'lspkind'
 
 cmp.setup({
+    dependencies = {
+        {
+            "zbirenbaum/copilot-cmp",
+            dependencies = "copilot.lua",
+            opts = {},
+            config = function(_, opts)
+                local copilot_cmp = require("copilot_cmp")
+                copilot_cmp.setup(opts)
+                copilot_cmp._on_insert_enter({})
+            end,
+        },
+    },
+    opts = function(_, opts)
+        table.insert(opts.sources, 1, {
+            name = "copilot",
+            group_index = 1,
+            priority = 1,
+        })
+    end,
     snippet = {
         expand = function(args)
             require('luasnip').lsp_expand(args.body)

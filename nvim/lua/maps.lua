@@ -14,19 +14,21 @@ vim.g.maplocalleader = " "
 --   normal_mode = "n",
 --   insert_mode = "i",
 --   visual_mode = "v",
---   visual_block_mode = "x", term_mode = "t",
+-- visual_block_mode = "x", term_mode = "t",
 --   command_mode = "c",
 keymap("v", "H", "0", opts)
 keymap("v", "L", "$", opts)
 
 -- Normal --
+-- Save, exit file --
+keymap("n", "<leader>w", ":w<CR>", opts)
+
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
-
-keymap("n", "<leader>e", ":Lex 30<cr>", opts)
+keymap("n", "<leader>e", ":Lex 30<CR>", opts)
 
 --Move cursor to beginning/end of line
 keymap("n", "L", "$", opts)
@@ -69,5 +71,3 @@ keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
 keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
-
--- Mapping Jump --

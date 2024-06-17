@@ -1,0 +1,12 @@
+-- local status, sqell = pcall(require, "spellsitter")
+--
+-- if (not status) then
+--     print("Sqellside is not installed")
+--     return
+-- end
+--
+-- -- quesion
+-- sqell.setup({
+--     enable = true,
+--     debug = false
+-- })
