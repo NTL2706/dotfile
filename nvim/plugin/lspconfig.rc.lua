@@ -156,6 +156,22 @@ nvim_lsp.lua_ls.setup {
     },
 }
 
+
+local function organize_imports()
+    local params = {
+        command = 'pyright.organizeimports',
+        arguments = { vim.uri_from_bufnr(0) },
+    }
+
+    local clients = util.get_lsp_clients {
+        bufnr = vim.api.nvim_get_current_buf(),
+        name = 'pyright',
+    }
+    for _, client in ipairs(clients) do
+        client.request('workspace/executeCommand', params, nil, 0)
+    end
+end
+
 -- NOTE: config python
 nvim_lsp.pyright.setup {
     on_attach = on_attach,
@@ -163,7 +179,17 @@ nvim_lsp.pyright.setup {
     cmd = { "pyright-langserver", "--stdio" },
     update_in_insert = true,
     single_file_support = true,
-    capabilities = capabilities
+    capabilities = capabilities,
+    settings = {
+        python = {
+            analysis = {
+                autoSearchPaths = true,
+                diagnosticMode = "workspace",
+                useLibraryCodeForTypes = true,
+                typeCheckingMode = "basic",
+            },
+        },
+    },
 }
 
 -- nvim_lsp.pylsp.setup {
@@ -172,7 +198,14 @@ nvim_lsp.pyright.setup {
 --     cmd = { "pylsp" },
 --     update_in_insert = true,
 --     single_file_support = true,
---     capabilities = capabilities
+--     capabilities = capabilities,
+--     settings = {
+--         pylsp = {
+--             plugins = {
+--                 pycodestyle = { enabled = false }
+--             }
+--         },
+--     },
 -- }
 
 -- NOTE: setup eslint

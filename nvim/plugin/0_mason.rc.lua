@@ -10,12 +10,12 @@ mason.setup({
             package_pending = "➜",
             package_uninstalled = "✗"
         }
-    }
-
+    },
+    PATH = "prepend"
 })
 
 mason_lspconfig.setup {
     automatic_installation = false,
-    ensure_installed = { "lua_ls", "pyright", "tsserver", "eslint" },
+    ensure_installed = { "lua_ls", "tsserver", "eslint", "pylsp", "pyright" },
     handlers = nil
 }
