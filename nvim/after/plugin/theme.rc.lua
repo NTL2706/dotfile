@@ -1,23 +1,70 @@
 -- In Lua
+-- require('nightfox').setup({
+--     options = {
+--         -- Compiled file's destination location
+--         compile_path = vim.fn.stdpath("cache") .. "/nightfox",
+--         compile_file_suffix = "_compiled", -- Compiled file suffix
+--         transparent = false,               -- Disable setting background
+--         terminal_colors = true,            -- Set terminal colors (vim.g.terminal_color_*) used in `:terminal`
+--         dim_inactive = false,              -- Non focused panes set to alternative background
+--         module_default = true,             -- Default enable value for modules
+--         colorblind = {
+--             enable = true,                 -- Enable colorblind support
+--             simulate_only = false,         -- Only show simulated colorblind colors and not diff shifted
+--             severity = {
+--                 protan = 0,                -- Severity [0,1] for protan (red)
+--                 deutan = 0,                -- Severity [0,1] for deutan (green)
+--                 tritan = 0,                -- Severity [0,1] for tritan (blue)
+--             },
+--         },
+--         styles = {             -- Style to be applied to different syntax groups
+--             comments = "NONE", -- Value is any valid attr-list value `:help attr-list`
+--             conditionals = "NONE",
+--             constants = "NONE",
+--             functions = "NONE",
+--             keywords = "NONE",
+--             numbers = "NONE",
+--             operators = "NONE",
+--             strings = "NONE",
+--             types = "NONE",
+--             variables = "NONE",
+--         },
+--         inverse = { -- Inverse highlight for different types
+--             match_paren = false,
+--             visual = false,
+--             search = false,
+--         },
+--         modules = { -- List of various plugins and additional options
+--             -- ...
+--         },
+--     },
+--     palettes = {},
+--     specs = {},
+--     groups = {},
+-- })
+
+-- setup must be called before loading
 -- vim.cmd("colorscheme nightfox")
--- vim.cmd([[colorscheme everforest]])
 -- -- Alternatively
 -- require("everforest").load()
--- Lua
--- vim.cmd [[colorscheme dracula]] -- theme dracula
-local status, colorscheme = pcall(require, "colorbuddy")
-if (not status)
-then
-    print("No load colorbuddy")
-    return
-end
-local status_cobalt2, cobalt2 = pcall(require, "cobalt2")
-if (not status_cobalt2)
-then
-    print("No load cobalt2")
-    return
-end
-colorscheme.colorscheme("cobalt2")
+--
+
+
+-- local status, colorscheme = pcall(require, "colorbuddy")
+-- if (not status)
+-- then
+--     print("No load colorbuddy")
+--     return
+-- end
+-- local status_cobalt2, cobalt2 = pcall(require, "cobalt2")
+-- if (not status_cobalt2)
+-- then
+--     print("No load cobalt2")
+--     return
+-- end
+-- colorscheme.colorscheme("cobalt2")
+
+
 -- file: colors/my-colorscheme-name.lua
 -- Set up your custom colorscheme if you want
 -- local dracula = require("dracula")
@@ -25,13 +72,13 @@ colorscheme.colorscheme("cobalt2")
 --     -- customize dracula color palette
 --     colors = {
 --         bg = "#282A36",
---         fg = "#F8F8F2",
+--         fg = "#F8F8A1",
 --         selection = "#44475A",
---         comment = "#6272A4",
+--         comment = "#6C7B9C",
 --         red = "#FF5555",
 --         orange = "#FFB86C",
 --         yellow = "#F1FA8C",
---         green = "#50fa7b",
+--         green = "#50FA7B",
 --         purple = "#BD93F9",
 --         cyan = "#8BE9FD",
 --         pink = "#FF79C6",
@@ -41,12 +88,12 @@ colorscheme.colorscheme("cobalt2")
 --         bright_blue = "#D6ACFF",
 --         bright_magenta = "#FF92DF",
 --         bright_cyan = "#A4FFFF",
---         bright_white = "#FFFFFF",
---         menu = "#21222C",
---         visual = "#3E4452",
---         gutter_fg = "#4B5263",
---         nontext = "#3B4048",
---         white = "#ABB2BF",
+--         bright_white = "#E6E6E6",
+--         menu = "#262833",
+--         visual = "#4B5362",
+--         gutter_fg = "#5B6273",
+--         nontext = "#4A4F58",
+--         white = "#D1D7DF",
 --         black = "#191A21",
 --     },
 --     -- show the '~' characters after the end of buffers
@@ -79,9 +126,9 @@ colorscheme.colorscheme("cobalt2")
 -- require("tokyonight").setup({
 --     -- your configuration comes here
 --     -- or leave it empty to use the default settings
---     style = "day",          -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
---     light_style = "day",    -- The theme is used when the background is set to light
---     transparent = true,     -- Enable this to disable setting the background color
+--     transstyle = "night",   -- The theme comes in three styles, `storm`, a darker variant `night` and `day`
+--     light_style = "day",
+--     parent = true,          -- Enable this to disable setting the background color
 --     terminal_colors = true, -- Configure the colors used when opening a `:terminal` in [Neovim](https://github.com/neovim/neovim)
 --     styles = {
 --         -- Style to be applied to different syntax groups
@@ -115,6 +162,10 @@ colorscheme.colorscheme("cobalt2")
 -- vim.cmd [[colorscheme tokyonight]]
 
 
+
+vim.cmd("colorscheme kanagawa")
+
+
 -- TODO: hidden background colors
 -- vim.cmd([[highlight Normal guibg=none ctermbg=none]])
 -- vim.cmd([[highlight LineNr guibg=none ctermbg=none]])
@@ -144,16 +195,19 @@ trans.setup({  -- Optional, you don't have to run setup.
         'Statement', 'PreProc', 'Type', 'Underlined', 'Todo', 'String', 'Function',
         'Conditional', 'Repeat', 'Operator', 'Structure', 'LineNr', 'NonText',
         'SignColumn', 'CursorLine', 'CursorLineNr', 'StatusLine', 'StatusLineNC',
-        'EndOfBuffer',
+        'EndOfBuffer'
     },
     extra_groups = {
         "NormalFloat",   -- plugins which have float panel such as Lazy, Mason, LspInfo
         "NvimTreeNormal"
     },                   -- table: additional groups that should be cleared
     exclude_groups = {}, -- table: groups you don't want to clear
+    on_clear = function() end,
 })
 
 trans.clear_prefix('BufferLine')
 trans.clear_prefix('NeoTree')
 trans.clear_prefix('lualine')
 trans.clear_prefix('telescope')
+
+-- vim.g.transparent_groups = vim.list_extend(vim.g.transparent_groups or {}, { "ExtraGroup" })

@@ -16,6 +16,6 @@ mason.setup({
 
 mason_lspconfig.setup {
     automatic_installation = false,
-    ensure_installed = { "lua_ls", "tsserver", "eslint", "pylsp", "pyright" },
+    ensure_installed = { "lua_ls", "tsserver", "eslint", "pyright" },
     handlers = nil
 }

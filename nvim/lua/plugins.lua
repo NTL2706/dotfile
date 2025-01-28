@@ -17,14 +17,17 @@ packer.startup(function(use)
     --     end,
     -- })
     -- use "EdenEast/nightfox.nvim"
-    -- use 'Mofiqul/dracula.nvim'
-    use {
-        'lalitmee/cobalt2.nvim',
-        requires = 'tjdevries/colorbuddy.nvim'
-    }
+    -- use 'wittyjudge/gruvbox-material.nvim' -- use 'Mofiqul/dracula.nvim'
+
+    use "rebelot/kanagawa.nvim"
+
+    -- use 'folke/tokyonight.nvim'
+    -- use {
+    --     'lalitmee/cobalt2.nvim',
+    --     requires = 'tjdevries/colorbuddy.nvim'
+    -- }
 
     use 'nvim-lua/plenary.nvim'      -- Common utilities
-    -- use 'folke/tokyonight.nvim'
     use 'nvim-lualine/lualine.nvim'  -- Statusline  use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
     use 'akinsho/nvim-bufferline.lua'
     use 'xiyaowong/transparent.nvim' -- Remove all background colors to make nvim transparent.
@@ -64,7 +67,7 @@ packer.startup(function(use)
     --     end
     -- }
 
-    --NOTE:  Command code
+    -- NOTE:  Command code
     use {
         'numToStr/Comment.nvim',
         config = function()
@@ -86,7 +89,10 @@ packer.startup(function(use)
 
     -- NOTE: search file
     use 'nvim-telescope/telescope.nvim'
-    use 'nvim-telescope/telescope-file-browser.nvim'
+    use {
+        "nvim-telescope/telescope-file-browser.nvim",
+        requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+    }
 
     -- NOTE: use 'kkharji/lspsaga.nvim' -- LSP UIs
     use 'windwp/nvim-autopairs'
